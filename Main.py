@@ -169,8 +169,11 @@ while(run):
     screen.blit(ages, agesRect)
     if submit_box.active :
         if name_box.text != '' and surname_box.text != '' and ages_box.text != '' :
-            submit = FONT.render('Hello ' + str(name_box.text) + ' ' + str(surname_box.text) +'! You are ' + str(ages_box.text) + ' years old.', True, (0,0,0))
-            screen.blit(submit, submitRect)
+            if name_box.text.isdigit() == True or surname_box.text.isdigit() == True or ages_box.text.isdigit() == False:
+                screen.blit(submiterror, submiterrorRect)
+            else:
+                submit = FONT.render('Hello ' + str(name_box.text) + ' ' + str(surname_box.text) +'! You are ' + str(ages_box.text) + ' years old.', True, (0,0,0))
+                screen.blit(submit, submitRect)
         else :
             screen.blit(submiterror, submiterrorRect)
     if name_box.active or surname_box.active :
